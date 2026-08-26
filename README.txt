@@ -1,14 +1,16 @@
-OM Drone Images V6 — Founder Page Update
+OM Drone Images V7 — Approved Founder Visual
 
-Changes:
-- Renames About the Owner to About the Founder
-- Renames Owner's Mission to Founder's Mission
-- Renames Owner's U.S. Patent to Founder's U.S. Patent
-- Fixes founder-section desktop alignment
-- Improves mobile stacking and prevents text/image cutoff
-- Preserves current credentials, patent information, government/public-sector section, and approved founder visual
+UPLOAD TO THE EXISTING OM DRONE IMAGES GITHUB REPOSITORY.
 
-GitHub update:
-Replace index.html in the existing om-drone-images repository.
-Commit directly to main.
-Vercel should deploy automatically.
+Files:
+1. index.html — replaces the existing index.html
+2. assets/drone-founder-v7.png — new approved founder visual
+
+IMPORTANT:
+- Keep the assets folder structure exactly as provided.
+- Do NOT upload this ZIP itself to GitHub.
+- Commit the extracted files to main.
+- Vercel should automatically create a new Production deployment.
+
+V7 preserves the V6 About the Founder wording and alignment fixes and updates
+the founder visual to the newly approved OM Drone Images design.
