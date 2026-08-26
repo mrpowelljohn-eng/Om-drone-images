@@ -19,3 +19,4 @@ To update the existing Vercel site:
 4. Confirm the preview.
 5. Promote/use the new deployment for Production if Vercel does not do so automatically.
 The existing omdroneimages.com domain should remain attached to the project.
+Vercel deployment connected.
