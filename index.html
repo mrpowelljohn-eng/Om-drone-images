@@ -33,10 +33,53 @@ footer{border-top:1px solid var(--line);padding:35px 0 50px;color:#8f9bad}.foot{
 .reveal{animation:rise .8s ease both}@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 @media(max-width:850px){.ownergrid{grid-template-columns:1fr!important;}.links a:not(.btn){display:none}.gallery{grid-template-columns:1fr;grid-template-rows:auto}.g1{grid-row:auto;min-height:460px}.cards{grid-template-columns:1fr 1fr}.split{grid-template-columns:1fr}.tenure{position:static;margin-top:28px;width:max-content}.hero-content{padding-bottom:65px}.hero{align-items:end}.hero .wrap{width:100%}}
 @media(max-width:600px){.cards{grid-template-columns:1fr}.statement,.cta{padding:30px}.hero{background-position:62% center}.gallery .shot{min-height:330px}}
+
+/* V6 Founder alignment fix */
+#owner .ownergrid{
+  display:grid !important;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr) !important;
+  gap:20px !important;
+  align-items:start !important;
+}
+#owner .ownergrid > *{min-width:0}
+#owner .feature{
+  width:100%;
+  min-height:0 !important;
+  aspect-ratio: 4 / 5;
+  background-size:contain !important;
+  background-repeat:no-repeat !important;
+  background-position:center top !important;
+  background-color:#090d13;
+}
+#owner .card,
+#owner .statement{
+  min-width:0;
+  overflow:hidden;
+}
+#owner h2,#owner h3,#owner p{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+@media(max-width:850px){
+  #owner .ownergrid{
+    grid-template-columns:1fr !important;
+  }
+  #owner .feature{
+    aspect-ratio:auto;
+    min-height:520px !important;
+    background-size:contain !important;
+  }
+}
+@media(max-width:600px){
+  #owner .head h2{font-size:clamp(2.2rem,11vw,3.4rem)}
+  #owner .statement h2{font-size:clamp(2.3rem,11vw,3.9rem)}
+  #owner .feature{min-height:430px !important}
+}
+
 </style>
 </head>
 <body>
-<nav><div class="wrap nav"><a class="brand" href="#"><span class="orb"></span>OM DRONE IMAGES</a><div class="links"><a href="#gallery">Imaging</a><a href="#services">Services</a><a href="#experience">Experience</a><a href="#government">Government</a><a href="#owner">About the Owner</a><a href="#join">Join the Team</a><a class="btn primary" href="#contact">Request a Mission</a></div></div></nav>
+<nav><div class="wrap nav"><a class="brand" href="#"><span class="orb"></span>OM DRONE IMAGES</a><div class="links"><a href="#gallery">Imaging</a><a href="#services">Services</a><a href="#experience">Experience</a><a href="#government">Government</a><a href="#owner">About the Founder</a><a href="#join">Join the Team</a><a class="btn primary" href="#contact">Request a Mission</a></div></div></nav>
 <header class="hero">
 <div class="wrap">
 <div class="hero-content reveal">
@@ -85,7 +128,7 @@ footer{border-top:1px solid var(--line);padding:35px 0 50px;color:#8f9bad}.foot{
 <section id="owner">
   <div class="wrap">
     <div class="head">
-      <div class="kicker">About the Owner</div>
+      <div class="kicker">About the Founder</div>
       <h2>Leadership. Experience. <span class="grad">Mission focused.</span></h2>
       <p>OM Drone Images is led by John T. Powell — FAA Part 107 certified Unmanned Aircraft Pilot, U.S. Army Sergeant veteran, logistics innovator, and technology professional with a background in computer networking.</p>
     </div>
@@ -101,7 +144,7 @@ footer{border-top:1px solid var(--line);padding:35px 0 50px;color:#8f9bad}.foot{
       </div>
     </div>
     <div class="statement" style="margin-top:22px">
-      <div class="kicker">Owner's Mission</div>
+      <div class="kicker">Founder's Mission</div>
       <h2>USE TECHNOLOGY.<br><span class="grad">SOLVE PROBLEMS. SERVE PEOPLE.</span></h2>
       <p>OM Drone Images was established in 2004 with a simple belief: technology should create real value. Whether the assignment is large or small, the standard is the same — lead with integrity, prepare with discipline, execute with precision, and leave the client with something worth remembering.</p>
     </div>

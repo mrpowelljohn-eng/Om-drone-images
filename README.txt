@@ -1,19 +1,14 @@
-OM Drone Images V5 — Owner + Patent Update
+OM Drone Images V6 — Founder Page Update
 
-This version:
-- Uses the approved owner visual
-- Keeps About the Owner and Join the Team structure
-- Adds exact U.S. Patent No. 6,957,114 B1
-- Adds patent date October 18, 2005
-- Adds patent title and inventor/assignee details
-- Keeps Established 2004, FAA Part 107, U.S. Army Sergeant veteran, and computer networking credentials
-- Keeps Government & Public Sector foundation
+Changes:
+- Renames About the Owner to About the Founder
+- Renames Owner's Mission to Founder's Mission
+- Renames Owner's U.S. Patent to Founder's U.S. Patent
+- Fixes founder-section desktop alignment
+- Improves mobile stacking and prevents text/image cutoff
+- Preserves current credentials, patent information, government/public-sector section, and approved founder visual
 
 GitHub update:
-Upload all four files to the existing om-drone-images repository:
-index.html
-README.txt
-vercel.json
-owner-leadership.png
-
-Commit directly to main. Vercel should deploy automatically.
+Replace index.html in the existing om-drone-images repository.
+Commit directly to main.
+Vercel should deploy automatically.
