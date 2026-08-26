@@ -1,16 +1,15 @@
-OM Drone Images V7 — Approved Founder Visual
+OM Drone Images V7.1 — Mobile-Safe Founder Image Fix
 
-UPLOAD TO THE EXISTING OM DRONE IMAGES GITHUB REPOSITORY.
+Why this version exists:
+GitHub mobile can flatten folders during upload. V7 expected the founder image at:
+assets/drone-founder-v7.png
 
-Files:
-1. index.html — replaces the existing index.html
-2. assets/drone-founder-v7.png — new approved founder visual
+This mobile-safe version keeps the image in the repository root:
+drone-founder-v7.png
 
-IMPORTANT:
-- Keep the assets folder structure exactly as provided.
-- Do NOT upload this ZIP itself to GitHub.
-- Commit the extracted files to main.
-- Vercel should automatically create a new Production deployment.
+Upload/replace in the existing om-drone-images repository:
+- index.html
+- drone-founder-v7.png
+- README.txt
 
-V7 preserves the V6 About the Founder wording and alignment fixes and updates
-the founder visual to the newly approved OM Drone Images design.
+Commit to main. Vercel should redeploy automatically.
