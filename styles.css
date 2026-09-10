@@ -82,22 +82,37 @@ footer{border-top:1px solid var(--line);padding:35px 0 50px;color:#8f9bad}.foot{
 
 
 /* ===== OM MUSIC CONTROL ===== */
+.music-strip{
+  border-bottom:1px solid var(--line);
+  background:#080c12;
+}
+.music-strip-inner{
+  max-width:var(--max);
+  margin:auto;
+  padding:10px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 .music-control{
-  position:fixed;right:18px;bottom:18px;z-index:80;
-  display:flex;align-items:center;gap:9px;
-  border:1px solid var(--line);border-radius:999px;
-  padding:11px 16px;background:#080c12e8;color:var(--txt);
-  font:800 13px/1 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
-  letter-spacing:.04em;cursor:pointer;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
-  backdrop-filter:blur(12px);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:9px 14px;
+  background:#ffffff08;
+  color:var(--txt);
+  font:800 12px/1 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  letter-spacing:.04em;
+  cursor:pointer;
 }
 .music-control:hover{border-color:#71e9ff88}
-.music-control .music-icon{color:var(--cyan);font-size:16px}
+.music-control .music-icon{color:var(--cyan);font-size:15px}
 @media(max-width:600px){
-  .music-control{right:12px;bottom:12px;padding:10px 13px;font-size:12px}
+  .music-strip-inner{padding:8px 14px}
+  .music-control{padding:8px 12px;font-size:11px}
 }
-
 
 /* ===== OM MOBILE MENU ===== */
 .menu-toggle{display:none;border:1px solid var(--line);background:#080c12d9;color:var(--txt);

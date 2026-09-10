@@ -27,7 +27,13 @@
 <div class="actions"><a class="btn primary" href="#contact">Book / Request a Quote</a><a class="btn" href="#gallery">See the Perspective</a></div>
 <div class="tenure"><strong>Since 2004</strong><span>More than two decades of imaging experience.</span></div>
 </div></div>
-</header><div class="marquee"><div class="track"><span><i>✦</i> AERIAL IMAGING</span><span>WEDDINGS</span><span>MILESTONE EVENTS</span><span>LAND & PROPERTY</span><span>CERTIFIED INSTRUCTION</span><span>SEARCH & LOCATION SUPPORT</span><span><i>✦</i> AIR • LAND • SEA</span><span><i>✦</i> AERIAL IMAGING</span><span>WEDDINGS</span><span>MILESTONE EVENTS</span><span>LAND & PROPERTY</span><span>CERTIFIED INSTRUCTION</span><span>SEARCH & LOCATION SUPPORT</span></div></div>
+</header><div class="music-strip">
+  <div class="music-strip-inner">
+    <button class="music-control" id="musicControl" type="button" aria-label="Play music">
+      <span class="music-icon">♪</span><span id="musicLabel">Play Music</span>
+    </button>
+  </div>
+</div><div class="marquee"><div class="track"><span><i>✦</i> AERIAL IMAGING</span><span>WEDDINGS</span><span>MILESTONE EVENTS</span><span>LAND & PROPERTY</span><span>CERTIFIED INSTRUCTION</span><span>SEARCH & LOCATION SUPPORT</span><span><i>✦</i> AIR • LAND • SEA</span><span><i>✦</i> AERIAL IMAGING</span><span>WEDDINGS</span><span>MILESTONE EVENTS</span><span>LAND & PROPERTY</span><span>CERTIFIED INSTRUCTION</span><span>SEARCH & LOCATION SUPPORT</span></div></div>
 <section><div class="wrap">
 <div class="head"><div class="kicker">Explore OM</div><h2>Choose your <span class="grad">perspective.</span></h2>
 <p>The full OM experience is now organized into focused pages instead of one continuous scroll.</p></div>
@@ -39,8 +45,6 @@
 <section><div class="wrap"><div class="cta"><div><div class="kicker">OM Drone Images</div><h2>Give us the mission.<br><span class="grad">We'll find the view.</span></h2><p>Air • Land • Sea.</p></div><a class="btn primary" href="contact.html">Request a Mission</a></div></div></section>
 <footer><div class="wrap foot"><div><b style="color:#fff">OM Drone Images</b><br>Air • Land • Sea</div><div>Established 2004 • Commercial • Public Sector • Powered by OM Creative Lab</div><div>Flight services subject to weather, airspace, access and applicable FAA rules.</div></div></footer>
 <audio id="omMusic" preload="auto" autoplay><source src="om-journey-preview.mp3" type="audio/mpeg"></audio>
-<button class="music-control" id="musicControl" type="button" aria-label="Pause music"><span class="music-icon">♪</span><span id="musicLabel">Pause Music</span></button>
-
 <script>
 (() => {
   const t=document.getElementById('menuToggle'), l=document.getElementById('siteLinks');
@@ -62,16 +66,18 @@
     };
 
     a.addEventListener('loadedmetadata',()=>{
-      const saved=parseFloat(sessionStorage.getItem(KEY) || '0');
+      const saved=parseFloat(sessionStorage.getItem(KEY)||'0');
       if(saved>0 && saved<a.duration) a.currentTime=saved;
       const wasPaused=sessionStorage.getItem(PAUSED)==='1';
       if(!wasPaused){
         a.play().then(()=>setPlaying(true)).catch(()=>setPlaying(false));
-      } else setPlaying(false);
+      } else {
+        setPlaying(false);
+      }
     });
 
     const save=()=>{
-      sessionStorage.setItem(KEY,String(a.currentTime || 0));
+      sessionStorage.setItem(KEY,String(a.currentTime||0));
       sessionStorage.setItem(PAUSED,a.paused?'1':'0');
     };
     a.addEventListener('timeupdate',save);
@@ -83,7 +89,7 @@
           await a.play();
           sessionStorage.setItem(PAUSED,'0');
           setPlaying(true);
-        }catch(e){ setPlaying(false); }
+        }catch(e){setPlaying(false);}
       }else{
         a.pause();
         sessionStorage.setItem(PAUSED,'1');
