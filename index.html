@@ -88,6 +88,24 @@ footer{border-top:1px solid var(--line);padding:35px 0 50px;color:#8f9bad}.foot{
   .owner-credentials{grid-template-columns:1fr}
 }
 
+
+/* ===== OM MUSIC CONTROL ===== */
+.music-control{
+  position:fixed;right:18px;bottom:18px;z-index:80;
+  display:flex;align-items:center;gap:9px;
+  border:1px solid var(--line);border-radius:999px;
+  padding:11px 16px;background:#080c12e8;color:var(--txt);
+  font:800 13px/1 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  letter-spacing:.04em;cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  backdrop-filter:blur(12px);
+}
+.music-control:hover{border-color:#71e9ff88}
+.music-control .music-icon{color:var(--cyan);font-size:16px}
+@media(max-width:600px){
+  .music-control{right:12px;bottom:12px;padding:10px 13px;font-size:12px}
+}
+
 </style>
 </head>
 <body>
@@ -218,4 +236,38 @@ footer{border-top:1px solid var(--line);padding:35px 0 50px;color:#8f9bad}.foot{
 </div></div></section>
 
 <footer><div class="wrap foot"><div><b style="color:#fff">OM Drone Images</b><br>Air • Land • Sea</div><div>Established 2004 • Commercial • Public Sector • Powered by OM Creative Lab</div><div>Flight services subject to weather, airspace, access and applicable FAA rules.</div></div></footer>
+
+<audio id="omMusic" preload="metadata">
+  <source src="om-journey-preview.mp3" type="audio/mpeg">
+</audio>
+<button class="music-control" id="musicControl" type="button" aria-label="Play music">
+  <span class="music-icon">♪</span><span id="musicLabel">Play Music</span>
+</button>
+<script>
+(() => {
+  const audio = document.getElementById('omMusic');
+  const button = document.getElementById('musicControl');
+  const label = document.getElementById('musicLabel');
+
+  function setPlaying(isPlaying){
+    label.textContent = isPlaying ? 'Pause Music' : 'Play Music';
+    button.setAttribute('aria-label', isPlaying ? 'Pause music' : 'Play music');
+  }
+
+  button.addEventListener('click', async () => {
+    if (audio.paused) {
+      try { await audio.play(); setPlaying(true); } catch (e) { setPlaying(false); }
+    } else {
+      audio.pause();
+      setPlaying(false);
+    }
+  });
+
+  audio.addEventListener('ended', () => {
+    audio.currentTime = 0;
+    setPlaying(false);
+  });
+})();
+</script>
+
 </body></html>
