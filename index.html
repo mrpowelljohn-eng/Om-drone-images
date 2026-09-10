@@ -106,10 +106,24 @@ footer{border-top:1px solid var(--line);padding:35px 0 50px;color:#8f9bad}.foot{
   .music-control{right:12px;bottom:12px;padding:10px 13px;font-size:12px}
 }
 
+
+/* ===== OM MOBILE MENU ===== */
+.menu-toggle{display:none;border:1px solid var(--line);background:#080c12d9;color:var(--txt);
+border-radius:12px;width:44px;height:44px;font-size:23px;cursor:pointer;align-items:center;justify-content:center}
+@media(max-width:850px){
+  .menu-toggle{display:inline-flex}
+  .links{display:none;position:absolute;top:72px;left:16px;right:16px;margin:0;padding:14px;
+    flex-direction:column;align-items:stretch;gap:4px;background:#080c12f5;border:1px solid var(--line);
+    border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.45);backdrop-filter:blur(16px)}
+  .links.open{display:flex}
+  .links a,.links a:not(.btn){display:block!important;padding:12px 14px;border-radius:10px}
+  .links .btn.primary{text-align:center;margin-top:5px}
+}
+
 </style>
 </head>
 <body>
-<nav><div class="wrap nav"><a class="brand" href="#"><span class="orb"></span>OM DRONE IMAGES</a><div class="links"><a href="#gallery">Imaging</a><a href="#services">Services</a><a href="#experience">Experience</a><a href="#government">Government</a><a href="#owner">About the Owner</a><a href="#join">Join the Team</a><a class="btn primary" href="#contact">Request a Mission</a></div></div></nav>
+<nav><div class="wrap nav"><a class="brand" href="#"><span class="orb"></span>OM DRONE IMAGES</a><button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button><div class="links" id="siteLinks"><a href="#gallery">Imaging</a><a href="#services">Services</a><a href="#experience">Experience</a><a href="#government">Government</a><a href="#owner">About the Owner</a><a href="#join">Join the Team</a><a class="btn primary" href="#contact">Request a Mission</a></div></div></nav>
 <header class="hero">
 <div class="wrap">
 <div class="hero-content reveal">
@@ -237,36 +251,52 @@ footer{border-top:1px solid var(--line);padding:35px 0 50px;color:#8f9bad}.foot{
 
 <footer><div class="wrap foot"><div><b style="color:#fff">OM Drone Images</b><br>Air • Land • Sea</div><div>Established 2004 • Commercial • Public Sector • Powered by OM Creative Lab</div><div>Flight services subject to weather, airspace, access and applicable FAA rules.</div></div></footer>
 
-<audio id="omMusic" preload="metadata">
+<audio id="omMusic" preload="auto" autoplay>
   <source src="om-journey-preview.mp3" type="audio/mpeg">
 </audio>
 <button class="music-control" id="musicControl" type="button" aria-label="Play music">
   <span class="music-icon">♪</span><span id="musicLabel">Play Music</span>
 </button>
+
+
+
 <script>
 (() => {
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('siteLinks');
+  if(toggle && links){
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.textContent = open ? '×' : '☰';
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.classList.remove('open'); toggle.textContent='☰';
+      toggle.setAttribute('aria-expanded','false');
+    }));
+  }
+
   const audio = document.getElementById('omMusic');
   const button = document.getElementById('musicControl');
   const label = document.getElementById('musicLabel');
+  if(audio && button && label){
+    const setPlaying = playing => {
+      label.textContent = playing ? 'Pause Music' : 'Play Music';
+      button.setAttribute('aria-label', playing ? 'Pause music' : 'Play music');
+    };
+    button.addEventListener('click', async () => {
+      if(audio.paused){
+        try{ await audio.play(); setPlaying(true); }catch(e){ setPlaying(false); }
+      } else { audio.pause(); setPlaying(false); }
+    });
+    audio.addEventListener('play', () => setPlaying(true));
+    audio.addEventListener('pause', () => setPlaying(false));
+    audio.addEventListener('ended', () => { audio.currentTime=0; setPlaying(false); });
 
-  function setPlaying(isPlaying){
-    label.textContent = isPlaying ? 'Pause Music' : 'Play Music';
-    button.setAttribute('aria-label', isPlaying ? 'Pause music' : 'Play music');
+    // Browsers may block audible autoplay. If so, the control remains ready for one-tap play.
+    audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
   }
-
-  button.addEventListener('click', async () => {
-    if (audio.paused) {
-      try { await audio.play(); setPlaying(true); } catch (e) { setPlaying(false); }
-    } else {
-      audio.pause();
-      setPlaying(false);
-    }
-  });
-
-  audio.addEventListener('ended', () => {
-    audio.currentTime = 0;
-    setPlaying(false);
-  });
 })();
 </script>
 
