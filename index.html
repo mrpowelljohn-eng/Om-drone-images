@@ -73,7 +73,23 @@
 }
 </style>
 
-</head><body><nav><div class="wrap nav">
+<style>
+#omIntro{position:fixed;inset:0;z-index:99999;background:#02050a;display:flex;align-items:center;justify-content:center;transition:opacity .8s ease,visibility .8s ease}
+#omIntro.hide{opacity:0;visibility:hidden;pointer-events:none}
+#omIntro video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+#omIntro:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.04) 55%,rgba(0,0,0,.52));pointer-events:none}
+#omIntroBrand{position:absolute;left:50%;bottom:7%;transform:translateX(-50%);z-index:2;text-align:center;color:#fff;width:min(90%,720px);text-shadow:0 3px 20px #000}
+#omIntroBrand strong{display:block;font-size:clamp(1.45rem,4vw,3rem);letter-spacing:.12em}
+#omIntroBrand span{display:block;margin-top:8px;color:#f4b33b;font-weight:700;letter-spacing:.28em}
+#omIntroSkip{position:absolute;top:20px;right:20px;z-index:3;border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(0,0,0,.38);color:#fff;padding:10px 16px;font:inherit;font-weight:700;cursor:pointer}
+@media(prefers-reduced-motion:reduce){#omIntro{display:none}}
+</style>
+</head><body>
+<div id="omIntro">
+<video id="omIntroVideo" autoplay muted playsinline preload="auto"><source src="PullBackShot09110041_1789105369203.mp4" type="video/mp4"></video>
+<button id="omIntroSkip" type="button">Skip Intro</button>
+<div id="omIntroBrand"><strong>OM DRONE IMAGES</strong><span>AIR • LAND • SEA</span></div>
+</div><nav><div class="wrap nav">
 <a class="brand" href="index.html"><span class="orb"></span>OM DRONE IMAGES</a>
 <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
 <div class="links" id="siteLinks">
@@ -183,6 +199,14 @@
       setPlaying(false);
     });
   }
+})();
+</script>
+<script>
+(function(){
+const i=document.getElementById('omIntro'),v=document.getElementById('omIntroVideo'),s=document.getElementById('omIntroSkip');
+if(!i||!v)return;let done=false;
+function close(){if(done)return;done=true;i.classList.add('hide');setTimeout(()=>{i.style.display='none';try{v.pause()}catch(e){}},850)}
+if(s)s.addEventListener('click',close);v.addEventListener('ended',close);v.addEventListener('error',close);setTimeout(close,6500);
 })();
 </script>
 </body></html>
